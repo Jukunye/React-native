@@ -2,10 +2,22 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 export default function TabsLayout() {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: Colors.bgColor,
+          borderTopWidth: 0,
+          padding: 0,
+        },
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: Colors.black,
+        tabBarInactiveTintColor: '#999',
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -25,8 +37,18 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="search"
         options={{
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="search" size={24} color={color} />
+          tabBarIcon: () => (
+            <View
+              style={{
+                backgroundColor: Colors.primaryColor,
+                paddingHorizontal: 16,
+                paddingVertical: 12,
+                borderRadius: 10,
+                height: 50,
+              }}
+            >
+              <Ionicons name="search-outline" size={24} color={Colors.white} />
+            </View>
           ),
         }}
       />
